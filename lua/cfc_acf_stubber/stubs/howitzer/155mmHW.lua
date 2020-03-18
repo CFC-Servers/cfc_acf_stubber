@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.12,
     name = "155mm Howitzer",
     desc = "The 155 is a classic heavy artillery round, with good reason.  A versatile weapon, it's found on most modern SPGs.",

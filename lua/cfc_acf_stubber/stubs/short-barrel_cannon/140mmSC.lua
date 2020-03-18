@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "140mm Short Cannon",
     desc = "A specialized weapon, developed from dark magic and anti-heavy tank hatred.  Deal with it.",

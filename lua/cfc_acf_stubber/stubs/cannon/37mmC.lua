@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.08,
     name = "37mm Cannon",
     desc = "A light and fairly weak cannon with good accuracy.",

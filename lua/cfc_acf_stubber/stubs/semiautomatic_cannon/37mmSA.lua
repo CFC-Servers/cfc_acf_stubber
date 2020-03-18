@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.1,
     name = "37mm Semiautomatic Cannon",
     desc = "The 37mm is surprisingly powerful, its five-round clips boasting a respectable payload and a high muzzle velocity.",

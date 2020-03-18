@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "120mm Short Cannon",
     desc = "The 120mm is a formidable yet lightweight weapon, with excellent performance against larger vehicles.",

@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.32,
     name = "40mm Countermeasure Launcher",
     desc = "A revolver-style launcher capable of firing off several smoke or flare rounds.",

@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.08,
     name = "75mm Autoloading Cannon",
     desc = "A quick-firing 75mm gun, pops off a number of rounds in relatively short order.",

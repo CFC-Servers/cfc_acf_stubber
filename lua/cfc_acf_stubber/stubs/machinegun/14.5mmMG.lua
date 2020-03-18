@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.24,
     name = "14.5mm Machinegun",
     desc = "The 14.5mm MG trades its smaller stablemates' rate of fire for more armor penetration and damage.",

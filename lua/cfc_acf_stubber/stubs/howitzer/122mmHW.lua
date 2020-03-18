@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.12,
     name = "122mm Howitzer",
     desc = "The 122mm bridges the gap between the 105 and the 155, providing a lethal round with a big splash radius.",

@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.12,
     name = "20mm Autocannon",
     desc = "The 20mm AC is the smallest of the family; having a good rate of fire but a tiny shell.",

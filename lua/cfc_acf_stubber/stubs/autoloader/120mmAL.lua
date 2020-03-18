@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.08,
     name = "120mm Autoloading Cannon",
     desc = "The 120mm autoloader can do serious damage before reloading, but the reload time is killer.",

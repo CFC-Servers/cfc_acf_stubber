@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "75mm Short Cannon",
     desc = "The 75mm is common WW2 medium tank armament, and still useful in many other applications.",
