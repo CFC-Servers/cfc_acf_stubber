@@ -12,9 +12,6 @@ for _, class in pairs( classes ) do
     local stubs, _ = file.Find( classPath .. "*", "LUA" )
     for _, stub in pairs( stubs ) do
         include( classPath .. stub )
-        if not DATA.gunclass then
-            print(classPath .. stub)
-        end
         local gunID = string.match( stub, "(.+)%.lua$" )
         stubData[gunID] = DATA
     end
@@ -60,7 +57,6 @@ local function runStubs()
                 gunData.enabled = nil
                 sensitiveMerge( gun, gunData )
             else
-                print("disable " .. gunID)
                 acfGuns[gunID] = nil
             end
         else
