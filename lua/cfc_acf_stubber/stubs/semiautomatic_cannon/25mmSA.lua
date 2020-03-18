@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.1,
     name = "25mm Semiautomatic Cannon",
     desc = "The 25mm semiauto can quickly put five rounds downrange, being lethal, yet light.",

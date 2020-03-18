@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.08,
     name = "100mm Autoloading Cannon",
     desc = "The 100mm is good for rapidly hitting medium armor, then running like your ass is on fire to reload.",

@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "50mm Short Cannon",
     desc = "The 50mm is a quick-firing pea-shooter, good for scouts, and common on old interwar tanks.",

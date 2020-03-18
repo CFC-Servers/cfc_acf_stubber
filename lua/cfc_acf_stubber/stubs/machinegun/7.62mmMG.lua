@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.24,
     name = "7.62mm Machinegun",
     desc = "The 7.62mm is effective against infantry, but its usefulness against armor is laughable at best.",

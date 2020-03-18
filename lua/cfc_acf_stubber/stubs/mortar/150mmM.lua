@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = false,
+    enabled = false,
     spread = 0.64,
     name = "150mm Mortar",
     desc = "The perfect balance between the 120mm and the 200mm. Can prove a worthy main gun weapon, as well as a mighty good mortar emplacement",

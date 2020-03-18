@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = false,
+    enabled = false,
     spread = 0.12,
     name = "203mm Howitzer",
     desc = "An 8-inch deck gun, found on siege artillery and cruisers.",

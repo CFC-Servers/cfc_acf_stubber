@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.4,
     name = "30mm Heavy Machinegun",
     desc = "30mm shell chucker, light and compact. Your average cold war dogfight go-to.",

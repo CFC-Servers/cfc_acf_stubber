@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "37mm Short Cannon",
     desc = "Quick-firing and light, but penetration is laughable.  You're better off throwing rocks.",

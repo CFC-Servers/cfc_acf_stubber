@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.24,
     name = "12.7mm Machinegun",
     desc = "The 12.7mm MG is still light, finding its way into a lot of mountings, including on top of tanks.",

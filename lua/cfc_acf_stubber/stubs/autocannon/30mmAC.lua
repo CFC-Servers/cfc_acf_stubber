@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.12,
     name = "30mm Autocannon",
     desc = "The 30mm AC can fire shells with sufficient space for a small payload, and has modest anti-armor capability",

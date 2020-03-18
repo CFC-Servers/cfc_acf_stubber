@@ -18,7 +18,7 @@ PATTERN_COMMENT_SINGLE = "--[^\n]+"
 LUA_HEADER = """AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
 """
 LUA_FOOTER = "}"
 
@@ -103,4 +103,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-	

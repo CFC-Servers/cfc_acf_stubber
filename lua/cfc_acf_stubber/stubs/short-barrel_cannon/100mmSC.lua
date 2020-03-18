@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.2,
     name = "100mm Short Cannon",
     desc = "The 100mm is an effective infantry-support or antitank weapon, with a lot of uses and surprising lethality.",

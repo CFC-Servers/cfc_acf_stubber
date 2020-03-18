@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-	enabled = true,
+    enabled = true,
     spread = 0.64,
     name = "60mm Mortar",
     desc = "The 60mm is a common light infantry support weapon, with a high rate of fire but a puny payload.",
