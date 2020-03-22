@@ -23,43 +23,43 @@ DATA = {
 LUA_FOOTER = "}"
 
 def remove_comments(commented):
-    noBlockComments = re.sub(PATTERN_COMMENT_BLOCK, '', commented)
-    uncommented = re.sub(PATTERN_COMMENT_SINGLE, '', noBlockComments)
+    no_block_comments = re.sub(PATTERN_COMMENT_BLOCK, '', commented)
+    uncommented = re.sub(PATTERN_COMMENT_SINGLE, '', no_block_comments)
     return uncommented
 
-def parse_table(keyValues):
+def parse_table(key_values):
     out = {}
     tabs = [out]
-    for res in re.findall(PATTERN_KEY_VALUES, keyValues):
-        curTab = tabs[-1]
+    for res in re.findall(PATTERN_KEY_VALUES, key_values):
+        cur_tab = tabs[-1]
         if res[2] == "}":
             del tabs[-1]
             continue
         key = res[0]
         value = res[1].strip()
         if value == "{":
-            curTab[key] = {}
-            tabs.append(curTab[key])
+            cur_tab[key] = {}
+            tabs.append(cur_tab[key])
         else:
             if value[-1] == ",":
                 value = value[:-1]
-            curTab[key] = value
+            cur_tab[key] = value
     return out
 
 def get_class_name_and_data(raw):
     res = re.search(PATTERN_DEFINE_GUN_CLASS, raw)
-    gunClass = res.group(1)
-    keyValues = res.group(2)
-    data = parse_table(keyValues)
-    return gunClass, data
+    gun_class = res.group(1)
+    key_values = res.group(2)
+    data = parse_table(key_values)
+    return gun_class, data
 
 def get_gun_name_and_data(raw):
     out = []
     for res in re.findall(PATTERN_DEFINE_GUN, raw):
-        gunName = res[0]
-        keyValues = res[1]
-        gunData = parse_table(keyValues)
-        out.append([gunName, gunData])
+        gun_name = res[0]
+        key_values = res[1]
+        gun_data = parse_table(key_values)
+        out.append([gun_name, gun_data])
     return out
 
 def data_to_lua(data, indent=""):
@@ -84,21 +84,21 @@ def main():
         with open(ACF_GUNS_PATHS + "/" + filename) as f:
             data = f.read()
         data = remove_comments(data)
-        gunClass, classData = get_class_name_and_data( data )
-        gunFolder = name_to_folder(classData["name"] or gunClass)
+        gun_class, class_data = get_class_name_and_data( data )
+        gun_folder = name_to_folder(class_data["name"] or gun_class)
 
-        Path(STUBS_PATH + "/" + gunFolder).mkdir(parents=True, exist_ok=True)
+        Path(STUBS_PATH + "/" + gun_folder).mkdir(parents=True, exist_ok=True)
 
         for obj in get_gun_name_and_data(data):
-            gunName = obj[0]
-            gunDataAlone = obj[1]
-            gunData = {**classData, **gunDataAlone}
+            gun_name = obj[0]
+            gun_dataAlone = obj[1]
+            gun_data = {**class_data, **gun_dataAlone}
 
-            lua = LUA_HEADER + data_to_lua(gunData, "    ") + LUA_FOOTER
-            luaPath = Path(STUBS_PATH + "/" + gunFolder + "/" + gunName + ".lua")
-            if luaPath.exists():
+            lua = LUA_HEADER + data_to_lua(gun_data, "    ") + LUA_FOOTER
+            lua_path = Path(STUBS_PATH + "/" + gun_folder + "/" + gun_name + ".lua")
+            if lua_path.exists():
                 continue
-            with open(luaPath, "w") as f:
+            with open(lua_path, "w") as f:
                 f.write(lua)
 
 if __name__ == "__main__":
