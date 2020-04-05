@@ -23,7 +23,7 @@ for _, class in pairs( classes ) do
         -- Grab its gunName from the file name (by removing .lua)
         local gunName = string.sub( stub, 1, #stub - 4 )
 
-        stubData[gunID] = DATA
+        stubData[gunName] = DATA
     end
 end
 DATA = oldDATA
