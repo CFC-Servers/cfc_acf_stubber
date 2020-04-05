@@ -1,18 +1,28 @@
 AddCSLuaFile()
+require( "cfclogger" )
+
+local logger = CFCLogger( "ACF Stubber" )
 
 -- Load our stubs
 local PATH = "cfc_acf_stubber/stubs/"
 local stubData = {}
 
--- In case "DATA" already exists, lets not cause a cancer bug
+-- In case "DATA" already exists, take copy of it to return after
 local oldDATA = DATA
+-- Grab folders (each named by class)
 local _, classes = file.Find( PATH .. "*", "LUA" )
 for _, class in pairs( classes ) do
+    -- Full path of class
     local classPath = PATH .. class .. "/"
+    -- Grab files within class (stubs)
     local stubs, _ = file.Find( classPath .. "*", "LUA" )
     for _, stub in pairs( stubs ) do
+        -- For each stub, include it
         include( classPath .. stub )
-        local gunID = string.match( stub, "(.+)%.lua$" )
+
+        -- Grab its gunName from the file name (by removing .lua)
+        local gunName = string.sub( stub, 1, #stub - 4 )
+
         stubData[gunID] = DATA
     end
 end
@@ -43,7 +53,7 @@ local function mapCase( tab )
 end
 
 local function runStubs()
-    print( "[ACF Stubber] Running stubs!" )
+    logger:info( "Running stubs!" )
     local acfGuns = list.GetForEdit( "ACFEnts" ).Guns
 
     local lowerToNormal = mapCase( table.GetKeys( acfGuns ) )
@@ -62,23 +72,23 @@ local function runStubs()
         else
             -- Could have already been removed this session
             if gunData.enabled then
-                print( "[ACF Stubber] Found stub for gun that doesn't exist! - " .. gunID )
+                logger:info( "Found stub for gun that doesn't exist! - " .. gunID )
             end
         end
     end
 end
 
 local function handleWaiterTimeout()
-    print( "[ACF Stubber] Waiter timed out! Not running stubs!" )
+    logger:info( "Waiter timed out! Not running stubs!" )
 end
 
 local waiterLoaded = Waiter
 
 if waiterLoaded then
-    print( "[ACF Stubber] Waiter is loaded, registering with it!" )
+    logger:info( "Waiter is loaded, registering with it!" )
     Waiter.waitFor( acfIsLoaded, runStubs, handleWaiterTimeout )
 else
-    print( "[ACF Stubber] Waiter is not loaded! Inserting our struct into the queue!" )
+    logger:info( "Waiter is not loaded! Inserting our struct into the queue!" )
     WaiterQueue = WaiterQueue or {}
 
     local struct = {}
