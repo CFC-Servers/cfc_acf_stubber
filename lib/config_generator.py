@@ -7,13 +7,13 @@ ADDONS_DIR = os.path.abspath('../..')
 ACF_GUNS_PATHS = ADDONS_DIR + "/acf/lua/acf/shared/guns"
 STUBS_PATH = ADDONS_DIR + "/cfc_acf_stubber/lua/cfc_acf_stubber/stubs"
 
-PATTERN_DEFINE_GUN_CLASS = "ACF_defineGunClass\\(\"([\\w\\.]+)\", {\\s*\n([^\\)]+)} \\)"
-PATTERN_DEFINE_GUN = "ACF_defineGun\\(\"([\\w\\.]+)\", {\\s*\n([^\\)]+)} \\)"
-
-PATTERN_KEY_VALUES = "(?:\\s+([\\w]+)\\s?=\\s?(.+))|(})"
-
-PATTERN_COMMENT_BLOCK = "--\\[\\[[^\\]]+\\]\\](?:--)?"
-PATTERN_COMMENT_SINGLE = "--[^\n]+"
+PATTERNS = {
+    "define_gun_class": re.compile("ACF_defineGunClass\\(\"([\\w\\.]+)\", {\\s*\n([^\\)]+)} \\)"),
+    "define_gun": re.compile("ACF_defineGun\\(\"([\\w\\.]+)\", {\\s*\n([^\\)]+)} \\)"),
+    "key_values": re.compile("(?:\\s+([\\w]+)\\s?=\\s?(.+))|(})"),
+    "comment_block": re.compile("--\\[\\[[^\\]]+\\]\\](?:--)?"),
+    "comment_single": re.compile("--[^\n]+"),
+}
 
 LUA_HEADER = """AddCSLuaFile()
 
@@ -23,14 +23,14 @@ DATA = {
 LUA_FOOTER = "}"
 
 def remove_comments(commented):
-    no_block_comments = re.sub(PATTERN_COMMENT_BLOCK, '', commented)
-    uncommented = re.sub(PATTERN_COMMENT_SINGLE, '', no_block_comments)
+    no_block_comments = PATTERNS["comment_block"].sub('', commented)
+    uncommented = PATTERNS["comment_single"].sub('', no_block_comments)
     return uncommented
 
 def parse_table(key_values):
     out = {}
     tabs = [out]
-    for res in re.findall(PATTERN_KEY_VALUES, key_values):
+    for res in PATTERNS["key_values"].findall(key_values):
         cur_tab = tabs[-1]
         if res[2] == "}":
             del tabs[-1]
@@ -47,7 +47,7 @@ def parse_table(key_values):
     return out
 
 def get_class_name_and_data(raw):
-    res = re.search(PATTERN_DEFINE_GUN_CLASS, raw)
+    res = PATTERNS["define_gun_class"].search(raw)
     gun_class = res.group(1)
     key_values = res.group(2)
     data = parse_table(key_values)
@@ -55,7 +55,7 @@ def get_class_name_and_data(raw):
 
 def get_gun_name_and_data(raw):
     out = []
-    for res in re.findall(PATTERN_DEFINE_GUN, raw):
+    for res in PATTERNS["define_gun"].findall(raw):
         gun_name = res[0]
         key_values = res[1]
         gun_data = parse_table(key_values)
