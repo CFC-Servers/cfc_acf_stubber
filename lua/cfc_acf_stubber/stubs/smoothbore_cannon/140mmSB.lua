@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-    enabled = false,
+    enabled = true,
     spread = 0.08,
     name = "140mm Smoothbore Cannonn",
     desc = "The 140mm fires a massive shell with enormous penetrative capability, but has a glacial reload speed and a very hefty weight.",

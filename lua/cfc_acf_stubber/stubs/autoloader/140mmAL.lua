@@ -1,7 +1,7 @@
 AddCSLuaFile()
 
 DATA = {
-    enabled = false,
+    enabled = true,
     spread = 0.08,
     name = "140mm Autoloading Cannon",
     desc = "The 140mm can shred a medium tank's armor with one magazine, and even function as shoot & scoot artillery, with its useful HE payload.",
