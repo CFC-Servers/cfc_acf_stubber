@@ -83,10 +83,7 @@ local function handleWaiterTimeout()
     logger:info( "Waiter timed out! Not running stubs!" )
 end
 
-local waiterLoaded = Waiter
 
-if waiterLoaded then
-    logger:info( "Waiter is loaded, registering with it!" )
-    Waiter.waitFor( acfIsLoaded, runStubs, handleWaiterTimeout )
-end
+logger:info( "Waiter is loaded, registering with it!" )
+Waiter.waitFor( acfIsLoaded, runStubs, handleWaiterTimeout )
 
