@@ -1,5 +1,6 @@
 AddCSLuaFile()
 require( "cfclogger" )
+require( "cfcwaiter" )
 
 local logger = CFCLogger( "ACF Stubber" )
 
@@ -87,14 +88,5 @@ local waiterLoaded = Waiter
 if waiterLoaded then
     logger:info( "Waiter is loaded, registering with it!" )
     Waiter.waitFor( acfIsLoaded, runStubs, handleWaiterTimeout )
-else
-    logger:info( "Waiter is not loaded! Inserting our struct into the queue!" )
-    WaiterQueue = WaiterQueue or {}
-
-    local struct = {}
-    struct["waitingFor"] = acfIsLoaded
-    struct["onSuccess"] = runStubs
-    struct["onTimeout"] = handleWaiterTimeout
-
-    table.insert( WaiterQueue, struct )
 end
+
